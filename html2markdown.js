@@ -228,7 +228,11 @@ function html2markdown(html, opts) {
 			case "dfn":
 			case "var":
 			case "cite":
-				nodeList.push(markdownTags[tag]);
+				if (nodeList[nodeList.length-1] === markdownTags[tag]) {
+					nodeList.splice(nodeList.length-1, 1);
+				} else {
+					nodeList.push(markdownTags[tag]);
+				}
 				break;
 			case "code":
 			case "span":
